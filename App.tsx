@@ -1,118 +1,81 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+function App(): React.JSX.Element {
+  return(
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.city}>Presidente Epitácio</Text>
+      </View>
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+      <View style={styles.datailsContrainer}>
+        <Text style={styles.temperature}>13 °C</Text>
+        <Image source={require('./src/assets/images/icon3.png')} style={styles.weatherIcon}></Image>
+      </View>
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+      <View>
+        <Text style={styles.weatherCondition}>Nublado</Text>
+        <Text style={styles.text}>Sensação térmica: 22 °C</Text>
+        <Text style={styles.text}>Probabilidade de chuva: 78%</Text>
+        <Text style={styles.text}>Umidade: 99%</Text>
+      </View>
+        <Image source={require('./src/assets/images/cidade.png')} style={styles.bottomImage}/>
     </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  bottomImage: {
+    width: '115%',
+    position: 'absolute',
+    bottom: 0,
+    resizeMode: 'cover',
+    height: '65%'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20
   },
-  sectionDescription: {
-    marginTop: 8,
+  city: {
+    fontWeight: 'bold',
+    color: '#000000',
+    fontSize: 25
+  },
+  weatherIcon: {
+    width: 100,
+    height: 100,
+    alignSelf: 'flex-end',
+    marginBottom: 20,
+    flexDirection: 'row'
+  },
+  datailsContrainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  weatherCondition: {
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: 'bold',
+    alignSelf: 'flex-end',
+    marginBottom: 20,
+    color: '#000000'
   },
-  highlight: {
-    fontWeight: '700',
+  temperature: {
+    fontSize: 50,
+    marginBottom: 20,
+    color: '#000000'
   },
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#5c677d'
+  },
+  text: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: '#000000',
+    marginBottom: 10
+  }
 });
 
 export default App;
